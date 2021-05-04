@@ -78,4 +78,24 @@ public class Restaurant {
         return name;
     }
 
+    public int calculateTotalOrder(List<String> listOfItems){
+        int totalPrice = 0;
+        if(listOfItems !=null && !listOfItems.isEmpty()){
+        Iterator itemIterator = listOfItems.iterator();
+        while (itemIterator.hasNext()){
+            String requestedItemName = (String) itemIterator.next();
+            Item item = findItemByName(requestedItemName);
+            if(item!=null){
+                totalPrice = totalPrice + item.getPrice();
+            }else{
+             System.out.println("Requested Item not found in Menu :"+requestedItemName);
+            }
+        }
+
+        }else{
+         System.out.println("Requested items must not be empty");
+        return 0;
+        }
+        return totalPrice;
+    }
 }
